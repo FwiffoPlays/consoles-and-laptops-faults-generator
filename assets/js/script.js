@@ -1,5 +1,6 @@
 //Constants and variables
 let faultsJson;
+let buttonType;
 //Initialisation
 
 
@@ -32,14 +33,14 @@ function loadJson() {
 function displayDevices() {
     devicesDiv = document.getElementById("devices-div"); //Find the devices div
     for (device of devicesList) { //Iterate through the devices array and create a button for each device type
-        devicesDiv.innerHTML += "<button id='"+device+"'>"+device+"</button>";
+        devicesDiv.innerHTML += "<input type='button' id='"+device+"' value='"+device+"'>";
     }
 
-    buttons = devicesDiv.getElementsByTagName("button");//Retrieve a list of buttons within the devices-div
+    buttons = devicesDiv.getElementsByTagName("input");//Retrieve a list of buttons within the devices-div
     
     for (button of buttons) {
         button.addEventListener("click", function() {
-            let buttonType = this.getAttribute("id");
+            buttonType = this.getAttribute("id");
             //alert("DEBUG: You clicked the "+buttonType+" button");
             displayFaults(buttonType);
         });
@@ -52,7 +53,7 @@ function submitFaults() {
 }
 
 function displayFaults(buttonType) {
-    document.getElementById("devices-div").innerHTML = "Device '"+buttonType+"' selected. Finally, please select the applicable faults and click submit."
+    document.getElementById("help-prompt").innerHTML = "Device '"+buttonType+"' selected. Finally, please select the applicable faults and click submit."
     faultsDiv = document.getElementById("faults-div"); //Find the faults div
     console.log("Clicked device button is: "+buttonType);
     deviceFaults = faultsJson[buttonType];
@@ -64,8 +65,12 @@ function displayFaults(buttonType) {
     //console.log("DEBUG: Printing faults list selected")
     for (currentfault of deviceFaults) {
         //console.log(currentfault.fault);
-        faultsDiv.innerHTML += "<input type='radio' id='"+currentfault.fault+"' name='faultsRadioForm' value='"+currentfault.description+"'>";
-        faultsDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
+        faultsDiv.innerHTML += "<div class='flex-checkbox' id='"+currentfault.fault+"Div'></div>";
+
+        checkboxDiv = document.getElementById(currentfault.fault+"Div");
+
+        checkboxDiv.innerHTML = "<input type='checkbox' id='"+currentfault.fault+"' name='faultsRadioForm' value='"+currentfault.description+"'>";
+        checkboxDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
     }
 
     faultsDiv.innerHTML += "<input type='button' id='faultsSubmitButton' value='Submit'>";

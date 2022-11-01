@@ -1,5 +1,5 @@
 //Constants and variables
-
+let faultsJson;
 //Initialisation
 
 
@@ -20,10 +20,10 @@ function loadJson() {
     function parseText(e) {
         let lines = e.target.result;
         let text = "";
-        var faultsJson = JSON.parse(lines);
+        faultsJson = JSON.parse(lines);
         console.log(faultsJson);
         devicesList = faultsJson.devices;
-        document.getElementById("help-prompt").innerHTML = "Now please choose a device type";
+        document.getElementById("help-prompt").innerHTML = "Now please choose a device type.";
         displayDevices();
     }
 
@@ -32,21 +32,47 @@ function loadJson() {
 function displayDevices() {
     devicesDiv = document.getElementById("devices-div"); //Find the devices div
     for (device of devicesList) { //Iterate through the devices array and create a button for each device type
-        devicesDiv.innerHTML += "<button id='"+device+"Button"+"'>"+device+"</button>";
+        devicesDiv.innerHTML += "<button id='"+device+"'>"+device+"</button>";
     }
-    devicesDivContent = document.getElementsByClassName("devices")[0];
+
     buttons = devicesDiv.getElementsByTagName("button");//Retrieve a list of buttons within the devices-div
     
     for (button of buttons) {
         button.addEventListener("click", function() {
-            buttonType = this.getAttribute("id");
-            alert("You clicked the "+buttonType+" button");
-            //displayFaults(buttonType);
+            let buttonType = this.getAttribute("id");
+            //alert("DEBUG: You clicked the "+buttonType+" button");
+            displayFaults(buttonType);
         });
     }
-
-        
-
-
        
+}
+
+function submitFaults() {
+    alert("Form submitted!");
+}
+
+function displayFaults(buttonType) {
+    document.getElementById("devices-div").innerHTML = "Device '"+buttonType+"' selected. Finally, please select the applicable faults and click submit."
+    faultsDiv = document.getElementById("faults-div"); //Find the faults div
+    console.log("Clicked device button is: "+buttonType);
+    deviceFaults = faultsJson[buttonType];
+
+    //console.log(deviceFaults);
+    faultsDiv.innerHTML = ""; //Reset the faults div contents to be blank ready for adding the new faults.
+    faultsDiv.innerHTML += "<form name='faultsForm' onsubmit='submitFaults()'>";
+
+    //console.log("DEBUG: Printing faults list selected")
+    for (currentfault of deviceFaults) {
+        //console.log(currentfault.fault);
+        faultsDiv.innerHTML += "<input type='radio' id='"+currentfault.fault+"' name='faultsRadioForm' value='"+currentfault.description+"'>";
+        faultsDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
+    }
+
+    faultsDiv.innerHTML += "<input type='button' id='faultsSubmitButton' value='Submit'>";
+    faultsDiv.innerHTML += "</form>";
+
+    faultsSubmitButton = document.getElementById("faultsSubmitButton")
+    faultsSubmitButton.addEventListener("click", function() {
+        submitFaults();
+    });
 }

@@ -48,9 +48,7 @@ function displayDevices() {
        
 }
 
-function submitFaults() {
-    alert("Form submitted!");
-}
+
 
 function displayFaults(buttonType) {
     document.getElementById("help-prompt").innerHTML = "Device '"+buttonType+"' selected. Finally, please select the applicable faults and click submit."
@@ -60,7 +58,7 @@ function displayFaults(buttonType) {
 
     //console.log(deviceFaults);
     faultsDiv.innerHTML = ""; //Reset the faults div contents to be blank ready for adding the new faults.
-    faultsDiv.innerHTML += "<form name='faultsForm' onsubmit='submitFaults()'>";
+    faultsDiv.innerHTML += "<form name='faultsForm' id='faults-form' onsubmit='submitFaults()'>";
 
     //console.log("DEBUG: Printing faults list selected")
     for (currentfault of deviceFaults) {
@@ -68,16 +66,38 @@ function displayFaults(buttonType) {
         faultsDiv.innerHTML += "<div class='flex-checkbox' id='"+currentfault.fault+"Div'></div>";
 
         checkboxDiv = document.getElementById(currentfault.fault+"Div");
-
-        checkboxDiv.innerHTML = "<input type='checkbox' id='"+currentfault.fault+"' name='faultsRadioForm' value='"+currentfault.description+"'>";
         checkboxDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
+        checkboxDiv.innerHTML += "<input class='fault-checkbox' type='checkbox' id='"+currentfault.fault+"' name='faultsForm' value='"+currentfault.description+"'>";
+        
     }
 
-    faultsDiv.innerHTML += "<input type='button' id='faultsSubmitButton' value='Submit'>";
+    faultsDiv.innerHTML += "<input type='submit' id='faultsSubmitButton' value='Submit'>";
     faultsDiv.innerHTML += "</form>";
+
 
     faultsSubmitButton = document.getElementById("faultsSubmitButton")
     faultsSubmitButton.addEventListener("click", function() {
         submitFaults();
     });
+    
+}
+
+function submitFaults() {
+    const outputBox = document.getElementById("output-text-area")
+    var checkedValues = ""; 
+    var checkedFaults = [];
+    const inputElements = document.getElementsByClassName('fault-checkbox');
+    console.log(inputElements);
+    for(el of inputElements){
+        if(el.checked){
+            checkedValues += el.value + "\n";
+            checkedFaults.push(el.id);
+            console.log(el.value);
+        }
+    }
+    outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n"
+    outputBox.innerHTML += checkedValues
+    console.log(checkedFaults);
+
+
 }

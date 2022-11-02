@@ -37,14 +37,6 @@ input[type=file] {
     font-size: 1em;
 }
 
-.flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    text-align: left;
-    flex-direction: column;
-    padding-left: 1em;
-  
-}
 
 .flex-devices {
     display: flex;
@@ -74,6 +66,12 @@ input[type=file] {
     flex-direction: row;
 }
 
+.flex-faults-output {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 120%;
+}
 
 
 @media (max-width: 950px) { /* For phone-sized devices: */
@@ -87,6 +85,10 @@ input[type=file] {
     }
     h2 {
         font-size: 1em;
+    }
+
+    textarea {
+        width: 100%;
     }
 
   }

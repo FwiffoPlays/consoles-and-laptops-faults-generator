@@ -1,0 +1,331 @@
+{
+	"devices":["laptop","macbook","playstation","xbox","switch","switchLite"],
+	"playstation": [
+		{
+
+			"fault": "slowDrive",
+			"title": "Slow disk drive",
+			"description": "The disk drive on your console is slow when accepting disks, requiring repair or replacement",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "notReadingDisks",
+			"title": "Not reading disks",
+			"description": "Your console is not reading disks and will therefore require repair or replacement of the disk drive.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "softwareFault",
+			"title": "Software fault",
+			"description": "There is a fault with the software on your console which has prevented the completion of testing such as loading a game and will require repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noPowerUp",
+			"title": "No power up",
+			"description": "Your device is faulty and does not power on, requiring repairs.",
+			"payGrade": "F",
+			"internalGrade": "Faulty"
+		},
+		{
+			"fault": "noPowerUpBLOD",
+			"title": "No power up (Blue Light of Death)",
+			"description": "Your device is faulty and does not completely power up, featuring a ''Blue Light of Death'' which suggests a critical hardware fault with your console and will repairs.",
+			"payGrade": "F",
+			"internalGrade": "Faulty"
+		},
+		{
+			"fault": "noDisplay",
+			"title": "No display",
+			"description": "Your device is faulty and does not output to a display despite signs of powering and will require repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "controllerFault",
+			"title": "Controller fault",
+			"description": "The provided controller is faulty with (INSERT FAULT HERE) and will require repair or replacement for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "noController",
+			"title": "No controller",
+			"description": "No controller was provided, which will need to be replaced for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "noPowerCable",
+			"title": "No power cable",
+			"description": "There was no power cable provided with the console, which will need to be replaced for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		}
+	
+	],
+	"xbox": [
+		{
+			"fault": "slowDrive",
+			"title": "Slow disk drive",
+			"description": "The disk drive on your console is slow when accepting disks, requiring repair or replacement",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "notReadingDisks",
+			"title": "Not reading disks",
+			"description": "Your console is not reading disks and will therefore require repair or replacement of the disk drive.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "softwareFault",
+			"title": "Software fault",
+			"description": "There is a fault with the software on your console which has prevented the completion of testing such as loading a game and will require repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noPowerUp",
+			"title": "No power up",
+			"description": "Your device is faulty and does not power on, requiring repairs.",
+			"payGrade": "F",
+			"internalGrade": "Faulty"
+		},
+		{
+			"fault": "noDisplay",
+			"title": "No display",
+			"description": "Your device is faulty and does not output to a display despite signs of powering and will require repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "controllerFault",
+			"title": "Controller fault",
+			"description": "The provided controller is faulty with (INSERT FAULT HERE) and will require repair or replacement for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "noController",
+			"title": "No controller",
+			"description": "No controller was provided, which will need to be replaced for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "noPowerCable",
+			"title": "No power cable",
+			"description": "There was no power cable provided with the console, which will need to be replaced for resale.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		}
+	
+	],
+	"laptop": [
+		{
+			"fault": "whitePressureMarks",
+			"title": "White pressure marks",
+			"description": "There are white pressure marks on the display, requiring a screen replacement.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "heavilyWornKeyboard",
+			"title": "Heavily worn keyboard",
+			"description": "The keyboard is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavilyWornTrackpad",
+			"title": "Heavily worn trackpad",
+			"description": "The trackpad is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavilyWornPalmRest",
+			"title": "Heavily worn palm rest",
+			"description": "The palm rest is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavyScratchesToCasing",
+			"title": "Heavy scratches to casing",
+			"description": "There are multiple heavy scratches on the casing, decreasing the resale value of the device.",
+			"payGrade": "",
+			"internalGrade": ""
+		},
+		{
+			"fault": "missingKey",
+			"title": "Missing key",
+			"description": "There are one or more missing keys on the keyboard, requiring repair or replacement/",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "excessiveKeyWear",
+			"title": "Excessive key wear",
+			"description": "One or more of the keys on the keyboard are excessively worn, with the silkscreen lettering being worn away, requiring repair or replacement of the keyboard.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "loudFan",
+			"title": "Loud fan",
+			"description": "The fan is very loud during normal operation of the device, a sign of potential overheating issues, requiring servicing of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "whiningFan",
+			"title": "Whining fan",
+			"description": "The fan emits a whining noise which is a warning sign of total fan failure in the near future and will need to be replaced.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "overheating",
+			"title": "Overheating",
+			"description": "The device overheated during our testing and will require servicing.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noDisplay",
+			"title": "No display",
+			"description": "Your device is faulty and does not output to the display, requiring repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "batteryFault",
+			"title": "Battery fault",
+			"description": "The battery on your device is faulty and does not hold a charge, requiring replacement.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noPowerUp",
+			"title": "No power up",
+			"description": "Your device is faulty and does not power on, requiring repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "F"
+		}
+	],
+	"macbook": [
+		{
+			"fault": "whitePressureMarks",
+			"title": "White pressure marks",
+			"description": "There are white pressure marks on the display, requiring a screen replacement.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "heavilyWornKeyboard",
+			"title": "Heavily worn keyboard",
+			"description": "The keyboard is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavilyWornTrackpad",
+			"title": "Heavily worn trackpad",
+			"description": "The trackpad is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavilyWornPalmRest",
+			"title": "Heavily worn palm rest",
+			"description": "The palm rest is heavily worn, decreasing the resale value of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavyScratchesToCasing",
+			"title": "Heavy scratches to casing",
+			"description": "There are multiple heavy scratches on the casing, decreasing the resale value of the device.",
+			"payGrade": "",
+			"internalGrade": ""
+		},
+		{
+			"fault": "missingKey",
+			"title": "Missing key",
+			"description": "There are one or more missing keys on the keyboard, requiring repair or replacement/",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "excessiveKeyWear",
+			"title": "Excessive key wear",
+			"description": "One or more of the keys on the keyboard are excessively worn, with the silkscreen lettering being worn away, requiring repair or replacement of the keyboard.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "loudFan",
+			"title": "Loud fan",
+			"description": "The fan is very loud during normal operation of the device, a sign of potential overheating issues, requiring servicing of the device.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "whiningFan",
+			"title": "Whining fan",
+			"description": "The fan emits a whining noise which is a warning sign of total fan failure in the near future and will need to be replaced.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "overheating",
+			"title": "Overheating",
+			"description": "The device overheated during our testing and will require servicing.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noDisplay",
+			"title": "No display",
+			"description": "Your device is faulty and does not output to the display, requiring repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "E"
+		},
+		{
+			"fault": "batteryFault",
+			"title": "Battery fault",
+			"description": "The battery on your device is faulty and does not hold a charge, requiring replacement.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		},
+		{
+			"fault": "noPowerUp",
+			"title": "No power up",
+			"description": "Your device is faulty and does not power on, requiring repairs.",
+			"payGrade": "Faulty",
+			"internalGrade": "F"
+		},
+		{
+			"fault": "lightScreenRub",
+			"title": "Light screen rub",
+			"description": "There is light screen rub on your device, decreasing its resale value.",
+			"payGrade": "Good",
+			"internalGrade": "C"
+		},
+		{
+			"fault": "heavyScreenRub",
+			"title": "Heavy screen rub",
+			"description": "There is heavy screen rub on your device, requiring repair or replacement of its display.",
+			"payGrade": "Faulty",
+			"internalGrade": "D"
+		}
+	]
+	
+}
+

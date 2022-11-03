@@ -87,17 +87,14 @@ function submitFaults() {
     var checkedValues = ""; 
     var checkedFaults = [];
     const inputElements = document.getElementsByClassName('fault-checkbox');
-    console.log(inputElements);
-    for(el of inputElements){
-        if(el.checked){
-            checkedValues += el.value + "\n";
-            checkedFaults.push(el.id);
-            console.log(el.value);
+    for(element of inputElements){
+        if(element.checked){
+            checkedValues += element.value + "\n";
+            checkedFaults.push(element.id);
+            //console.log(element.value);
         }
     }
     outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n"
     outputBox.innerHTML += checkedValues
-    console.log(checkedFaults);
-
-
+    //console.log(checkedFaults);
 }

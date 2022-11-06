@@ -10,8 +10,34 @@
 <title>Consoles & Laptops Grading</title>
 </head>    
 <body>
-    <header>
+    <header class="flex-header">
         <h1>Consoles and Laptops Faults Generator</h1>
+        
+        <div id ="help-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Instructions:</h2>
+                <ol>
+                    <li>
+                        Click either the 'load default' button or choose a file and click the 'load custom' button
+                    </li>
+                    <li>
+                        Select the device type you would like to generate a grade for
+                    </li>
+                    <li>
+                        Use the checkboxes to select faults
+                    </li>
+                    <li>
+                        Click 'Submit'
+                    </li>
+
+                    <p>
+                        Your faults text has now been output to the text box at the bottom of the page.
+                    </p>
+                </ol>
+            </div>  
+        </div>
+        <button id="help-button">Help</button>
     </header>
     <section>Website logo</section>
     <h2 id="help-prompt">Please select a faults list JSON file.</h2>

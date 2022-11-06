@@ -68,7 +68,7 @@ input[type=file] {
 
 .flex-faults-output {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     font-size: 120%;
 }
@@ -126,6 +126,12 @@ input[type=file] {
     display: inline-block;
     font-size: 1.5em;
 }
+
+#grading-text-div {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 950px) { /* For phone-sized devices: */
     .flex-devices {
       flex: 100%;

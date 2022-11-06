@@ -4,6 +4,20 @@ let buttonType;
 let loadDefaultButton = document.getElementById("load-default-button")
 let loadCustomButton = document.getElementById("load-custom-button")
 
+let payGrades = {
+    "Excellent": 0,
+    "Good": 1,
+    "Faulty": 2
+};
+
+let internalGrades = {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "E": 4,
+    "F": 5
+};
 
 
 //Setup modal
@@ -95,11 +109,11 @@ function displayDevices() {
 
 
 
-function displayFaults(buttonType) {
-    document.getElementById("help-prompt").innerHTML = "Device '"+buttonType+"' selected. Finally, please select the applicable faults and click submit."
+function displayFaults(deviceType) {
+    document.getElementById("help-prompt").innerHTML = "Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit."
     faultsDiv = document.getElementById("faults-div"); //Find the faults div
-    console.log("Clicked device button is: "+buttonType);
-    deviceFaults = faultsJson[buttonType];
+    console.log("Clicked device button is: "+deviceType);
+    deviceFaults = faultsJson[deviceType];
 
     //console.log(deviceFaults);
     faultsDiv.innerHTML = ""; //Reset the faults div contents to be blank ready for adding the new faults.
@@ -122,13 +136,40 @@ function displayFaults(buttonType) {
 
     faultsSubmitButton = document.getElementById("faultsSubmitButton")
     faultsSubmitButton.addEventListener("click", function() {
-        submitFaults();
+        submitFaults(deviceType);
     });
     
 }
 
-function submitFaults() {
-    const outputBox = document.getElementById("output-text-area")
+function getSuggestedPayGrade(selectedfaultsArray, deviceType) {
+let lowestGrade=0;
+let lowestGradeText="";
+let deviceFaultsList = faultsJson[deviceType];
+console.log(selectedfaultsArray);
+    for(selectedFault of selectedfaultsArray) {
+        for (fault of deviceFaultsList) {
+            if (fault["fault"] == selectedFault) {
+                gradeValue = payGrades[fault["payGrade"]];
+                console.log(gradeValue)
+                if (gradeValue > lowestGrade) {
+                    lowestGrade = gradeValue;
+                    lowestGradeText = fault["payGrade"];
+                }
+            }
+        }
+    }
+    lowestPayGrade = lowestGradeText;
+    console.log("Lowest selected grade = "+lowestPayGrade);
+    return lowestPayGrade;
+}
+
+function getSuggestedInternalGrade(faultsArray) {
+
+}
+
+function submitFaults(deviceType) {
+    const outputBox = document.getElementById("output-text-area");
+    const payGradeDiv = document.getElementById("pay-grade-div");
     var checkedValues = ""; 
     var checkedFaults = [];
     const inputElements = document.getElementsByClassName('fault-checkbox');
@@ -142,4 +183,7 @@ function submitFaults() {
     outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n"
     outputBox.innerHTML += checkedValues
     //console.log(checkedFaults);
+    let payGradeText = getSuggestedPayGrade(checkedFaults, deviceType);
+    payGradeDiv.innerHTML = "Suggested pay grade: "+payGradeText;
+
 }

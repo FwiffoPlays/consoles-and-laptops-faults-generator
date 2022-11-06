@@ -141,12 +141,12 @@ function displayFaults(deviceType) {
     
 }
 
-function getSuggestedPayGrade(selectedfaultsArray, deviceType) {
-let lowestGrade=0;
-let lowestGradeText="";
-let deviceFaultsList = faultsJson[deviceType];
-console.log(selectedfaultsArray);
-    for(selectedFault of selectedfaultsArray) {
+function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
+    let lowestGrade=0;
+    let lowestGradeText="";
+    let deviceFaultsList = faultsJson[deviceType];
+    console.log(selectedFaultsArray);
+    for(selectedFault of selectedFaultsArray) {
         for (fault of deviceFaultsList) {
             if (fault["fault"] == selectedFault) {
                 gradeValue = payGrades[fault["payGrade"]];
@@ -159,17 +159,36 @@ console.log(selectedfaultsArray);
         }
     }
     lowestPayGrade = lowestGradeText;
-    console.log("Lowest selected grade = "+lowestPayGrade);
+    console.log("Lowest selected pay grade = "+lowestPayGrade);
     return lowestPayGrade;
 }
 
-function getSuggestedInternalGrade(faultsArray) {
-
+function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
+    let lowestGrade=0;
+    let lowestGradeText="";
+    let deviceFaultsList = faultsJson[deviceType];
+    console.log(selectedFaultsArray);
+    for(selectedFault of selectedFaultsArray) {
+        for (fault of deviceFaultsList) {
+            if (fault["fault"] == selectedFault) {
+                gradeValue = internalGrades[fault["internalGrade"]];
+                console.log(gradeValue)
+                if (gradeValue > lowestGrade) {
+                    lowestGrade = gradeValue;
+                    lowestGradeText = fault["internalGrade"];
+                }
+            }
+        }
+    }
+    lowestInternalGrade = lowestGradeText;
+    console.log("Lowest selected internal grade = "+lowestInternalGrade);
+    return lowestInternalGrade;
 }
 
 function submitFaults(deviceType) {
     const outputBox = document.getElementById("output-text-area");
     const payGradeDiv = document.getElementById("pay-grade-div");
+    const internalGradeDiv = document.getElementById("internal-grade-div")
     var checkedValues = ""; 
     var checkedFaults = [];
     const inputElements = document.getElementsByClassName('fault-checkbox');
@@ -185,5 +204,8 @@ function submitFaults(deviceType) {
     //console.log(checkedFaults);
     let payGradeText = getSuggestedPayGrade(checkedFaults, deviceType);
     payGradeDiv.innerHTML = "Suggested pay grade: "+payGradeText;
+
+    let internalGradeText = getSuggestedInternalGrade(checkedFaults, deviceType);
+    internalGradeDiv.innerHTML = "Suggested internal grade: "+internalGradeText;
 
 }

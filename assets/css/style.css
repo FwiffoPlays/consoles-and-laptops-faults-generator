@@ -70,6 +70,7 @@ input[type=file] {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-around;
     font-size: 120%;
 }
 
@@ -147,5 +148,9 @@ input[type=file] {
 
     textarea {
         width: 100%;
+    }
+
+    .flex-faults-output {
+        flex-direction: column;
     }
   }

@@ -1,7 +1,9 @@
 //Constants and variables
 let faultsJson;
 let buttonType;
-//Initialisation
+let loadDefaultButton = document.getElementById("load-default-button")
+let loadCustomButton = document.getElementById("load-custom-button")
+
 
 
 //Setup modal
@@ -23,30 +25,54 @@ window.onclick = function(event) {
     }
 }
 
+//Button events
+
+loadDefaultButton.addEventListener("click", function() //Setup the load default JSON button
+{
+    loadDefaultJson();
+});
+
+loadCustomButton.addEventListener("click", function() //Setup the load default JSON button
+{
+    loadCustomJson();
+});
 //Functions
-function loadJson() {
+
+
+function loadDefaultJson() { //Loads the default JSON faults file which is stored on the web server
+    HTTPRequest = new XMLHttpRequest();
+    HTTPRequest.open("GET","assets/json/faults.json",false);
+    HTTPRequest.send(null);
+    text=HTTPRequest.responseText;
+    parseText(text);
+}
+
+function loadCustomJson() { //Loads a custom JSON file that is stored locally on the user's device
     jsonInput = document.getElementById('file-selector');
 
     if (!jsonInput.files[0]) {
         alert("Please select a file before clicking 'Load'")
     }
     else {
-        file = jsonInput.files[0];
-        reader = new FileReader();
-        reader.onload = parseText;
+        let file = jsonInput.files[0];
+        console.log(file);
+        let reader = new FileReader();
         reader.readAsText(file);
+
+        reader.onload = function() {
+            parseText(reader.result);
+        };
+        
     }
 
-    function parseText(e) {
-        let lines = e.target.result;
-        let text = "";
-        faultsJson = JSON.parse(lines);
-        console.log(faultsJson);
-        devicesList = faultsJson.devices;
-        document.getElementById("help-prompt").innerHTML = "Now please choose a device type.";
-        displayDevices();
-    }
+}
 
+function parseText(input) {
+    faultsJson = JSON.parse(input);
+    console.log(faultsJson);
+    devicesList = faultsJson.devices;
+    document.getElementById("help-prompt").innerHTML = "Now please choose a device type.";
+    displayDevices();
 }
 
 function displayDevices() {

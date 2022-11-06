@@ -40,9 +40,10 @@
         <button id="help-button">Help</button>
     </header>
     <section>Website logo</section>
-    <h2 id="help-prompt">Please select a faults list JSON file.</h2>
+    <h2 id="help-prompt">Please either click to load the default data or choose a custom file below.</h2>
+    <input type="button" value="Load Default" id="load-default-button">
     <input type="file" id="file-selector" accept=".json">
-    <input type="button" onclick="loadJson()" value="Load JSON">
+    <input type="button" value="Load Custom" id="load-custom-button">
 
     <div class="flex-devices" id="devices-div"></div>
 

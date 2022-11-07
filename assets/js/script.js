@@ -91,6 +91,7 @@ function parseText(input) {
 
 function displayDevices() {
     devicesDiv = document.getElementById("devices-div"); //Find the devices div
+    devicesDiv.innerHTML = "";
     for (device of devicesList) { //Iterate through the devices array and create a button for each device type
         devicesDiv.innerHTML += "<input type='button' id='"+device+"' value='"+device+"'>";
     }

@@ -85,9 +85,11 @@ function parseText(input) {
     faultsJson = JSON.parse(input);
     console.log(faultsJson);
     devicesList = faultsJson.devices;
-    document.getElementById("help-prompt").innerHTML = "Now please choose a device type.";
+    document.getElementById("help-prompt").innerHTML = "<p style='color: rgb(185, 67, 8);'>Now please choose a device type.</p>";
     displayDevices();
 }
+
+
 
 function displayDevices() {
     devicesDiv = document.getElementById("devices-div"); //Find the devices div
@@ -111,7 +113,7 @@ function displayDevices() {
 
 
 function displayFaults(deviceType) {
-    document.getElementById("help-prompt").innerHTML = "Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit."
+    document.getElementById("help-prompt").innerHTML = "<p style='color: #4CAF50; '>Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit.</p>"
     faultsDiv = document.getElementById("faults-div"); //Find the faults div
     console.log("Clicked device button is: "+deviceType);
     deviceFaults = faultsJson[deviceType];

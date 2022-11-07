@@ -1,8 +1,9 @@
+/*jshint esversion: 6 */
 //Constants and variables
 let faultsJson;
 let buttonType;
-let loadDefaultButton = document.getElementById("load-default-button")
-let loadCustomButton = document.getElementById("load-custom-button")
+let loadDefaultButton = document.getElementById("load-default-button");
+let loadCustomButton = document.getElementById("load-custom-button");
 
 let payGrades = {
     "Excellent": 0,
@@ -27,17 +28,17 @@ let modalCloseSpan = document.getElementsByClassName("close")[0];
 
 helpButton.onclick = function() {
     modal.style.display = "block";
-}
+};
 
 modalCloseSpan.onclick = function() {
     modal.style.display = "none";
-}
+};
 
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
-}
+};
 
 //Button events
 
@@ -52,20 +53,18 @@ loadCustomButton.addEventListener("click", function() //Setup the load default J
 });
 //Functions
 
-
 function loadDefaultJson() { //Loads the default JSON faults file which is stored on the web server
-    HTTPRequest = new XMLHttpRequest();
-    HTTPRequest.open("GET","assets/json/faults.json",false);
-    HTTPRequest.send(null);
-    text=HTTPRequest.responseText;
-    parseText(text);
+    let req = new XMLHttpRequest();
+    req.open("GET","assets/json/faults.json",false);
+    req.send(null);
+    parseText(req.responseText);
 }
 
 function loadCustomJson() { //Loads a custom JSON file that is stored locally on the user's device
-    jsonInput = document.getElementById('file-selector');
+    let jsonInput = document.getElementById('file-selector');
     
     if (!jsonInput.files[0]) {
-        document.getElementById("help-prompt").innerHTML = "<p style='color: red;'>Please select a faults JSON file before clicking 'Load Custom'</p>"
+        document.getElementById("help-prompt").innerHTML = "<p style='color: red;'>Please select a faults JSON file before clicking 'Load Custom'</p>";
     }
     else {
         let file = jsonInput.files[0];
@@ -82,80 +81,72 @@ function loadCustomJson() { //Loads a custom JSON file that is stored locally on
 
 function parseText(input) {
     faultsJson = JSON.parse(input);
-    devicesList = faultsJson.devices;
     document.getElementById("help-prompt").innerHTML = "<p style='color: rgb(185, 67, 8);'>Now please choose a device type.</p>";
     displayDevices();
 }
 
-
-
 function displayDevices() {
-    devicesDiv = document.getElementById("devices-div"); //Find the devices div
+    let devicesDiv = document.getElementById("devices-div"); //Find the devices div
+    let devicesList = faultsJson.devices;
     devicesDiv.innerHTML = "";
-    for (device of devicesList) { //Iterate through the devices array and create a button for each device type
+    for (let device of devicesList) { //Iterate through the devices array and create a button for each device type
         devicesDiv.innerHTML += "<input type='button' id='"+device+"' value='"+device+"'>";
     }
 
-    buttons = devicesDiv.getElementsByTagName("input");//Retrieve a list of buttons within the devices-div
+    let buttons = devicesDiv.getElementsByTagName("input");//Retrieve a list of buttons within the devices-div
     
-    for (button of buttons) {
+    for (let button of buttons) {
         button.addEventListener("click", function() {
             buttonType = this.getAttribute("id");
             displayFaults(buttonType);
         });
     }
-       
 }
 
 
 
 function displayFaults(deviceType) {
-    document.getElementById("help-prompt").innerHTML = "<p style='color: #4CAF50; '>Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit.</p>"
-    faultsDiv = document.getElementById("faults-div"); //Find the faults div
+    document.getElementById("help-prompt").innerHTML = "<p style='color: #4CAF50; '>Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit.</p>";
+    let faultsDiv = document.getElementById("faults-div"); //Find the faults div
 
-    deviceFaults = faultsJson[deviceType];
+    let deviceFaults = faultsJson[deviceType];
 
     faultsDiv.innerHTML = ""; //Reset the faults div contents to be blank ready for adding the new faults.
     faultsDiv.innerHTML += "<form name='faultsForm' id='faults-form' onsubmit='submitFaults()'>";
 
-    for (currentfault of deviceFaults) {
-
+    for (let currentfault of deviceFaults) {
         faultsDiv.innerHTML += "<div class='flex-checkbox' id='"+currentfault.fault+"Div'></div>";
 
-        checkboxDiv = document.getElementById(currentfault.fault+"Div");
+        let checkboxDiv = document.getElementById(currentfault.fault+"Div");
         checkboxDiv.innerHTML += "<input class='fault-checkbox' type='checkbox' id='"+currentfault.fault+"' name='faultsForm' value='"+currentfault.description+"'>";
         checkboxDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
-        
-        
     }
 
     faultsDiv.innerHTML += "<input type='submit' id='faultsSubmitButton' value='Submit'>";
     faultsDiv.innerHTML += "</form>";
 
-
-    faultsSubmitButton = document.getElementById("faultsSubmitButton")
+    let faultsSubmitButton = document.getElementById("faultsSubmitButton");
     faultsSubmitButton.addEventListener("click", function() {
         submitFaults(deviceType);
     });
-    
 }
 
 function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
-    for(selectedFault of selectedFaultsArray) {
-        for (fault of deviceFaultsList) {
-            if (fault["fault"] == selectedFault) {
-                gradeValue = payGrades[fault["payGrade"]];
+    for(let selectedFault of selectedFaultsArray) {
+        for (let fault of deviceFaultsList) {
+            if (fault.payGrade == selectedFault) {
+                let gradeValue = payGrades[fault.payGrade];
                 if (gradeValue > lowestGrade) {
                     lowestGrade = gradeValue;
-                    lowestGradeText = fault["payGrade"];
+                    lowestGradeText = fault.payGrade;
                 }
             }
         }
     }
-    lowestPayGrade = lowestGradeText;
+    let lowestPayGrade = lowestGradeText;
     return lowestPayGrade;
 }
 
@@ -163,40 +154,39 @@ function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
-    for(selectedFault of selectedFaultsArray) {
-        for (fault of deviceFaultsList) {
-            if (fault["fault"] == selectedFault) {
-                gradeValue = internalGrades[fault["internalGrade"]];
+    for(let selectedFault of selectedFaultsArray) {
+        for (let fault of deviceFaultsList) {
+            if (fault.fault == selectedFault) {
+                let gradeValue = internalGrades[fault.internalGrade];
                 if (gradeValue > lowestGrade) {
                     lowestGrade = gradeValue;
-                    lowestGradeText = fault["internalGrade"];
+                    lowestGradeText = fault.internalGrade;
                 }
             }
         }
     }
-    lowestInternalGrade = lowestGradeText;
+    let lowestInternalGrade = lowestGradeText;
     return lowestInternalGrade;
 }
 
 function submitFaults(deviceType) {
     const outputBox = document.getElementById("output-text-area");
     const payGradeDiv = document.getElementById("pay-grade-div");
-    const internalGradeDiv = document.getElementById("internal-grade-div")
+    const internalGradeDiv = document.getElementById("internal-grade-div");
     var checkedValues = ""; 
     var checkedFaults = [];
     const inputElements = document.getElementsByClassName('fault-checkbox');
-    for(element of inputElements){
+    for(let element of inputElements){
         if(element.checked){
             checkedValues += element.value + "\n";
             checkedFaults.push(element.id);
         }
     }
-    outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n"
-    outputBox.innerHTML += checkedValues
+    outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n";
+    outputBox.innerHTML += checkedValues;
     let payGradeText = getSuggestedPayGrade(checkedFaults, deviceType);
     payGradeDiv.innerHTML = "Suggested pay grade: "+payGradeText;
 
     let internalGradeText = getSuggestedInternalGrade(checkedFaults, deviceType);
     internalGradeDiv.innerHTML = "Suggested internal grade: "+internalGradeText;
-
 }

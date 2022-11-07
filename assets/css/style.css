@@ -77,7 +77,7 @@ input[type=file] {
 .flex-header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     width: 100%f;
 }
 /* Modal styling: */
@@ -136,6 +136,11 @@ input[type=file] {
     color: #4CAF50; 
 }
 
+.banner-img {
+    width: 100%;
+    height: auto;
+}
+
 #help-button {
     background-color: #4CAF50; 
     border: none;
@@ -144,7 +149,8 @@ input[type=file] {
     text-align: center;
     border-radius: 4px;
     text-decoration: none;
-    display: inline-block;
+    justify-self: flex-end;
+    align-items: flex-end;
     font-size: 1.5em;
 }
 

@@ -9,12 +9,14 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
 <link rel="stylesheet" href="assets/css/style.css">
-<title>Consoles & Laptops Grading</title>
+<title>Consoles & Laptops Faults Generator</title>
 </head>    
 <body>
-    <header class="flex-header">
-        <h1>Consoles and Laptops Faults Generator</h1>
-        
+    <img src="assets/images/banner.webp" class="banner-img">
+    <header class="flex-header">   
+        <button id="help-button">Help</button>
+    </header>
+    <section>
         <div id ="help-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -39,9 +41,7 @@
                 </ol>
             </div>  
         </div>
-        <button id="help-button">Help</button>
-    </header>
-    <section>Website logo</section>
+    </section>
     <h2 id="help-prompt">Please either click to load the default data or choose a custom file below.</h2>
     <input type="button" value="Load Default" id="load-default-button">
     <input type="file" id="file-selector" accept=".json">

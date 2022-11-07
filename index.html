@@ -12,7 +12,7 @@
 <title>Consoles & Laptops Faults Generator</title>
 </head>    
 <body>
-    <img src="assets/images/banner.webp" class="banner-img">
+    <img src="assets/images/banner.webp" class="banner-img" alt="Image of the website banner">
     <header class="flex-header">   
         <button id="help-button">Help</button>
     </header>
@@ -42,8 +42,9 @@
             </div>  
         </div>
     </section>
-    <h2 id="help-prompt">Please either click to load the default data or choose a custom file below.</h2>
+    <h1 id="help-prompt">Please either click to load the default data or choose a custom file below.</h2>
     <input type="button" value="Load Default" id="load-default-button">
+    <label for="file-selector">Pick a JSON faults file</label>
     <input type="file" id="file-selector" accept=".json">
     <input type="button" value="Load Custom" id="load-custom-button">
 

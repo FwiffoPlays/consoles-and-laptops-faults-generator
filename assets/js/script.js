@@ -69,7 +69,6 @@ function loadCustomJson() { //Loads a custom JSON file that is stored locally on
     }
     else {
         let file = jsonInput.files[0];
-        console.log(file);
         let reader = new FileReader();
         reader.readAsText(file);
 
@@ -83,7 +82,6 @@ function loadCustomJson() { //Loads a custom JSON file that is stored locally on
 
 function parseText(input) {
     faultsJson = JSON.parse(input);
-    console.log(faultsJson);
     devicesList = faultsJson.devices;
     document.getElementById("help-prompt").innerHTML = "<p style='color: rgb(185, 67, 8);'>Now please choose a device type.</p>";
     displayDevices();
@@ -103,7 +101,6 @@ function displayDevices() {
     for (button of buttons) {
         button.addEventListener("click", function() {
             buttonType = this.getAttribute("id");
-            //alert("DEBUG: You clicked the "+buttonType+" button");
             displayFaults(buttonType);
         });
     }
@@ -115,16 +112,14 @@ function displayDevices() {
 function displayFaults(deviceType) {
     document.getElementById("help-prompt").innerHTML = "<p style='color: #4CAF50; '>Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit.</p>"
     faultsDiv = document.getElementById("faults-div"); //Find the faults div
-    console.log("Clicked device button is: "+deviceType);
+
     deviceFaults = faultsJson[deviceType];
 
-    //console.log(deviceFaults);
     faultsDiv.innerHTML = ""; //Reset the faults div contents to be blank ready for adding the new faults.
     faultsDiv.innerHTML += "<form name='faultsForm' id='faults-form' onsubmit='submitFaults()'>";
 
-    //console.log("DEBUG: Printing faults list selected")
     for (currentfault of deviceFaults) {
-        //console.log(currentfault.fault);
+
         faultsDiv.innerHTML += "<div class='flex-checkbox' id='"+currentfault.fault+"Div'></div>";
 
         checkboxDiv = document.getElementById(currentfault.fault+"Div");
@@ -149,12 +144,10 @@ function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
-    console.log(selectedFaultsArray);
     for(selectedFault of selectedFaultsArray) {
         for (fault of deviceFaultsList) {
             if (fault["fault"] == selectedFault) {
                 gradeValue = payGrades[fault["payGrade"]];
-                console.log(gradeValue)
                 if (gradeValue > lowestGrade) {
                     lowestGrade = gradeValue;
                     lowestGradeText = fault["payGrade"];
@@ -163,7 +156,6 @@ function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
         }
     }
     lowestPayGrade = lowestGradeText;
-    console.log("Lowest selected pay grade = "+lowestPayGrade);
     return lowestPayGrade;
 }
 
@@ -171,12 +163,10 @@ function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
-    console.log(selectedFaultsArray);
     for(selectedFault of selectedFaultsArray) {
         for (fault of deviceFaultsList) {
             if (fault["fault"] == selectedFault) {
                 gradeValue = internalGrades[fault["internalGrade"]];
-                console.log(gradeValue)
                 if (gradeValue > lowestGrade) {
                     lowestGrade = gradeValue;
                     lowestGradeText = fault["internalGrade"];
@@ -185,7 +175,6 @@ function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
         }
     }
     lowestInternalGrade = lowestGradeText;
-    console.log("Lowest selected internal grade = "+lowestInternalGrade);
     return lowestInternalGrade;
 }
 
@@ -200,12 +189,10 @@ function submitFaults(deviceType) {
         if(element.checked){
             checkedValues += element.value + "\n";
             checkedFaults.push(element.id);
-            //console.log(element.value);
         }
     }
     outputBox.innerHTML = "The following issues were found with your device and has therefore been repriced:\n"
     outputBox.innerHTML += checkedValues
-    //console.log(checkedFaults);
     let payGradeText = getSuggestedPayGrade(checkedFaults, deviceType);
     payGradeDiv.innerHTML = "Suggested pay grade: "+payGradeText;
 

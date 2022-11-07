@@ -63,9 +63,9 @@ function loadDefaultJson() { //Loads the default JSON faults file which is store
 
 function loadCustomJson() { //Loads a custom JSON file that is stored locally on the user's device
     jsonInput = document.getElementById('file-selector');
-
+    
     if (!jsonInput.files[0]) {
-        alert("Please select a file before clicking 'Load'")
+        document.getElementById("help-prompt").innerHTML = "<p style='color: red;'>Please select a faults JSON file before clicking 'Load Custom'</p>"
     }
     else {
         let file = jsonInput.files[0];

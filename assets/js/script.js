@@ -125,8 +125,9 @@ function displayFaults(deviceType) {
         faultsDiv.innerHTML += "<div class='flex-checkbox' id='"+currentfault.fault+"Div'></div>";
 
         checkboxDiv = document.getElementById(currentfault.fault+"Div");
-        checkboxDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
         checkboxDiv.innerHTML += "<input class='fault-checkbox' type='checkbox' id='"+currentfault.fault+"' name='faultsForm' value='"+currentfault.description+"'>";
+        checkboxDiv.innerHTML += "<label for='"+currentfault.fault+"'>"+currentfault.title+"</label>";
+        
         
     }
 

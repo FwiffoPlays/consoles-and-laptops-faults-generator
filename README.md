@@ -66,12 +66,12 @@ Most of the site is contained within a single page. It begins with minimal conte
 
 ### Accessibility
 
-** Validator Testing **
+**Validator Testing**
 - HTML
 - CSS
 - JavaScript
 
-** Lighthouse Report **
+**Lighthouse Report**
 
 
 **Github Footer link**
@@ -88,7 +88,7 @@ Each test was carried out by choosing an input (including none at all) and click
     - Tested with no file selected. The program correctly prompts the user with an alert asking them to choose a file.
 
 ## Deployment
-** Live Site **
+**Live Site**
 The live version of this project was deployed on Github Pages, which is done through the following steps:
 - Navigate to the project's github repository whilst logged into Github on the account which owns it
 - Open the 'settings' tab
@@ -96,9 +96,9 @@ The live version of this project was deployed on Github Pages, which is done thr
 - Select the branch to deploy (Usually 'main' is appropriate)
 - After waiting for about a minute for deployment to finish, navigate to the URL which is given near the top of the 'Pages' section.
 
-** Version Control **
+**Version Control**
 
-** Clone repository **
+**Clone repository**
 
 ## Credits
     

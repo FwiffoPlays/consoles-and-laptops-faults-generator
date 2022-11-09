@@ -136,8 +136,9 @@ function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
     for(let selectedFault of selectedFaultsArray) {
+        console.log(selectedFault);
         for (let fault of deviceFaultsList) {
-            if (fault.payGrade == selectedFault) {
+            if (fault.fault == selectedFault) {
                 let gradeValue = payGrades[fault.payGrade];
                 if (gradeValue > lowestGrade) {
                     lowestGrade = gradeValue;

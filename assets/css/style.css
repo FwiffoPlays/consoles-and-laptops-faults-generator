@@ -80,7 +80,7 @@ input[type=file] {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 100%f;
+    width: 100%;
 }
 /* Modal styling: */
 .modal {

@@ -1,3 +1,5 @@
+/*Generic elements styling*/
+
 body {
     font-family: Arial, Helvetica, sans-serif;    
 }
@@ -39,7 +41,7 @@ input[type=file] {
 }
 
 
-
+/*Class styling*/
 .flex-devices {
     display: flex;
     flex-direction: row;
@@ -143,6 +145,7 @@ input[type=file] {
     height: auto;
 }
 
+/* ID based styling */
 #help-button {
     background-color: #4CAF50; 
     border: none;
@@ -161,10 +164,11 @@ input[type=file] {
     flex-direction: column;
 }
 
-@media (max-width: 950px) { /* For phone-sized devices: */
+/* Media query for site responsiveness */
+@media (max-width: 950px) { 
     .flex-devices {
       flex: 100%;
-      flex-direction: column;
+      flex-direction: column; /* Rearranges the devices buttons so they are shown vertically on a small screen*/ 
     }
 
     h1 {
@@ -176,6 +180,6 @@ input[type=file] {
     }
 
     .flex-faults-output {
-        flex-direction: column;
+        flex-direction: column; /* Rearranges the output data so it is shown vertically on a small screen*/ 
     }
   }

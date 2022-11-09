@@ -53,14 +53,21 @@ loadCustomButton.addEventListener("click", function() //Setup the load default J
 });
 //Functions
 
-function loadDefaultJson() { //Loads the default JSON faults file which is stored on the web server
+
+/** 
+ * Retrieves the default JSON faults file which is stored on the web server
+*/
+function loadDefaultJson() {
     let req = new XMLHttpRequest();
     req.open("GET","assets/json/faults.json",false);
     req.send(null);
     parseText(req.responseText);
 }
 
-function loadCustomJson() { //Loads a custom JSON file that is stored locally on the user's device
+/** 
+ * Loads a custom JSON file that is stored locally on the user's device
+*/
+function loadCustomJson() { 
     let jsonInput = document.getElementById('file-selector');
     
     if (!jsonInput.files[0]) {
@@ -79,12 +86,18 @@ function loadCustomJson() { //Loads a custom JSON file that is stored locally on
 
 }
 
+/** 
+ * Parses the JSON text which has just been loaded and calls the displayDevices function
+*/
 function parseText(input) {
     faultsJson = JSON.parse(input);
     document.getElementById("help-prompt").innerHTML = "<p style='color: rgb(185, 67, 8);'>Now please choose a device type.</p>";
     displayDevices();
 }
 
+/** 
+ * Adds the device type buttons to the devicesDiv and attatches their event listeners
+*/
 function displayDevices() {
     let devicesDiv = document.getElementById("devices-div"); //Find the devices div
     let devicesList = faultsJson.devices;
@@ -104,7 +117,9 @@ function displayDevices() {
 }
 
 
-
+/** 
+ * Creates the fault checkboxes for the selected device type
+*/
 function displayFaults(deviceType) {
     document.getElementById("help-prompt").innerHTML = "<p style='color: #4CAF50; '>Device '"+deviceType+"' selected. Finally, please select the applicable faults and click submit.</p>";
     let faultsDiv = document.getElementById("faults-div"); //Find the faults div
@@ -131,6 +146,9 @@ function displayFaults(deviceType) {
     });
 }
 
+/** 
+ * Retrieves the lowest pay grade from the array of selected faults
+*/
 function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
@@ -151,6 +169,9 @@ function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     return lowestPayGrade;
 }
 
+/** 
+ * Retrieves the lowest internal grade from the array of selected faults
+*/
 function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
     let lowestGrade=0;
     let lowestGradeText="";
@@ -170,6 +191,9 @@ function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
     return lowestInternalGrade;
 }
 
+/** 
+ * Collects the selected faults from the form and outputs the faults information
+*/
 function submitFaults(deviceType) {
     const outputBox = document.getElementById("output-text-area");
     const payGradeDiv = document.getElementById("pay-grade-div");

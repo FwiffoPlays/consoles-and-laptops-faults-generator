@@ -16,6 +16,7 @@
     <header class="flex-header">   
         <button id="help-button">Help</button>
     </header>
+    <!-- Help modal contents which are kept hidden until the help button is clicked -->
     <section>
         <div id ="help-modal" class="modal">
             <div class="modal-content">
@@ -47,11 +48,11 @@
     <input type="file" id="file-selector" accept=".json">
     <input type="button" value="Load Custom" id="load-custom-button">
 
-    <div class="flex-devices" id="devices-div"></div>
+    <div class="flex-devices" id="devices-div"></div> <!-- Container for the device type buttons -->
 
-    <div class="flex-faults" id="faults-div"></div>
+    <div class="flex-faults" id="faults-div"></div> <!-- Container for the device fault checkboxes-->
 
-    <div class="flex-faults-output" id="output-div">
+    <div class="flex-faults-output" id="output-div"> <!-- Container for the faults output-->
         <div id="grading-text-div">
             <label for='output-text-area'>Grading output text</label>
             <textarea id='output-text-area' name='output-text-area' rows='8' cols='50'></textarea>
@@ -61,6 +62,6 @@
     </div>
     <footer>
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script> <!-- Loads the site's JavaScript-->
 </body>
 </html>

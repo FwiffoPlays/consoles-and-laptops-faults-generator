@@ -162,6 +162,14 @@
     
     ],
     "laptop": [
+    	{
+ 
+            "fault": "belowSpec",
+            "title": "Below spec",
+            "description": "A (INSERT RECEIVED CPU) was received instead of an (INSERT CPU ON SITE), which is below our minimum spec requirements.",
+            "payGrade": "Excellent",
+            "internalGrade": "C"
+        },
         {
             "fault": "whitePressureMarks",
             "title": "White pressure marks",
@@ -298,6 +306,14 @@
         }
     ],
     "macbook": [
+    	{
+ 
+            "fault": "belowSpec",
+            "title": "Below spec",
+            "description": "A (INSERT RECEIVED CPU) was received instead of an (INSERT CPU ON SITE), which is below our minimum spec requirements.",
+            "payGrade": "Excellent",
+            "internalGrade": "C"
+        },
         {
             "fault": "whitePressureMarks",
             "title": "White pressure marks",
@@ -493,8 +509,8 @@
         },
         {
             "fault": "damagedAnalogSticks",
-            "title": "The analog sticks on your device are damaged, with (INSERT FAULT) and will require repair or replacement.",
-            "description": "There are white pressure marks on the display, requiring a screen replacement.",
+            "title": "Damaged analog sticks",
+            "description": "The analog sticks on your device are damaged, with (INSERT FAULT) and will require repair or replacement.",
             "payGrade": "Faulty",
             "internalGrade": "D"
         },
@@ -520,5 +536,4 @@
             "internalGrade": "D"
         }
     ]
-    
 }

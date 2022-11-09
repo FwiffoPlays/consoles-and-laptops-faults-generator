@@ -136,11 +136,11 @@ function getSuggestedPayGrade(selectedFaultsArray, deviceType) {
     let lowestGradeText="";
     let deviceFaultsList = faultsJson[deviceType];
     for(let selectedFault of selectedFaultsArray) {
-        console.log(selectedFault);
+
         for (let fault of deviceFaultsList) {
             if (fault.fault == selectedFault) {
                 let gradeValue = payGrades[fault.payGrade];
-                if (gradeValue > lowestGrade) {
+                if (gradeValue >= lowestGrade) {
                     lowestGrade = gradeValue;
                     lowestGradeText = fault.payGrade;
                 }
@@ -159,7 +159,7 @@ function getSuggestedInternalGrade(selectedFaultsArray, deviceType) {
         for (let fault of deviceFaultsList) {
             if (fault.fault == selectedFault) {
                 let gradeValue = internalGrades[fault.internalGrade];
-                if (gradeValue > lowestGrade) {
+                if (gradeValue >= lowestGrade) {
                     lowestGrade = gradeValue;
                     lowestGradeText = fault.internalGrade;
                 }
